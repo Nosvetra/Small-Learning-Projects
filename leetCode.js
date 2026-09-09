@@ -1,29 +1,22 @@
 class Solution {
-  matrixBinarySearch(arr, target) {
-    let rows = arr.length;
-    let colums = arr[0].length;
-    let left = 0,
-      right = rows * colums - 1;
-    while (left <= right) {
-      console.log("iterate counter");
-      let mid = Math.floor(left + right / 2);
-      let row = Math.floor(mid / colums);
-      let colum = mid % colums;
-      let value = arr[row][colum];
-      if (value === target) {
-        return true;
-      }
-      value > target ? (right = mid - 1) : (left = mid + 1);
+  subsets(nums) {
+    let final = [[]];
+    if (nums.length === 1) {
+      final.push([nums[0]]);
     }
-    return false;
+    const distinctArrElements = new Set();
+    for (const i of nums) {
+      distinctArrElements.add(i);
+    }
+    distinctArrElements.forEach((a) => {
+      final.push([a]);
+    });
+    return final;
   }
 }
 
-let arr = [
-  [1, 3, 5, 7],
-  [10, 11, 16, 20],
-  [23, 30, 34, 60],
-];
+let arr = [23, 30, 34, 60, 60, 23];
+
 const obj = new Solution();
-const b = obj.matrixBinarySearch(arr, 90);
+const b = obj.subsets(arr);
 console.log(b);
