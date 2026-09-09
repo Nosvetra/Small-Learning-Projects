@@ -1,6 +1,7 @@
-import config from "./config";
+import config from "./config/index.js";
 import express from "express";
 import cors from "cors";
+import apiRoutes from "./router/indexRoute.js";
 
 const app = express();
 
@@ -15,6 +16,6 @@ app.use(
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-app.use("/", indexRoutes);
+app.use("/", apiRoutes);
 
 export default app;

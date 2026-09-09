@@ -1,5 +1,5 @@
-import app from "./app";
-import config from "./config";
+import app from "./app.js";
+import config from "./config/index.js";
 
 async function startServer() {
   try {
@@ -10,3 +10,5 @@ async function startServer() {
     console.error("Failed to start Server", err);
   }
 }
+
+startServer();
