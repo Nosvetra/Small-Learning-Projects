@@ -1,18 +1,15 @@
 import express from "express";
+import articleController from "../controller/articleController.js";
 
 const router = express.Router();
 
-router.post("/new", (req, res) => {
-  res.json({ message: "this is the /articles/new/ post but On get Rn" });
-});
+router.post("/new", articleController.articlePost);
 
-router.get("/:articleId", (req, res) => {
-  res.json({ message: "hellods" });
-});
+router.get("/:articleId", articleController.particularArticle);
 
-router.patch("/:articleId/edit", (req, res) => {});
+router.patch("/:articleId/edit", articleController.editArticle);
 
-router.delete("/:articleId/delete", (req, res) => {});
+router.delete("/:articleId/delete", articleController.deleteArticle);
 
 export default router;
 

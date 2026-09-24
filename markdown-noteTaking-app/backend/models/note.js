@@ -7,7 +7,11 @@ const nodeSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    content: {
+    description: {
+      type: String,
+      required: true,
+    },
+    markdown: {
       type: String,
       required: true,
     },

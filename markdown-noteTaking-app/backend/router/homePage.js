@@ -1,8 +1,7 @@
 import express from "express";
+import articleController from "../controller/articleController.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({ message: "this is the usuasl / route" });
-});
+router.get("/", articleController.showLimitedArticles);
 export default router;
