@@ -11,11 +11,14 @@ class articleServices {
   async getParticularArticle(idString) {
     return await this.noteRepo.getParticularArticle(idString);
   }
-  async patchArticle(data) {
-    console.log(data);
+  async patchArticle(id, data) {
+    return await this.noteRepo.updateNote(id, data);
   }
   async getLimitedArticles() {
     return await this.noteRepo.getLimitedArticles();
+  }
+  async deleteArticle(id) {
+    return await this.noteRepo.deleteArticle(id);
   }
 }
 

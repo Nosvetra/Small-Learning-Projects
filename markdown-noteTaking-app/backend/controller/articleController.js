@@ -5,7 +5,7 @@ class articleController {
   }
   showLimitedArticles = async (req, res, next) => {
     const response = await this.articleService.getLimitedArticles();
-    res.send({ response });
+    res.send(response);
   };
   articlePost = async (req, res, next) => {
     const response = await this.articleService.articlePost(req.body);
@@ -18,10 +18,18 @@ class articleController {
     res.send(response);
   };
   editArticle = async (req, res, next) => {
-    console.log(req.body, " Patch");
+    const data = { id: req.params.articleId, article: req.body };
+    const response = await this.articleService.patchArticle(
+      data.id,
+      data.article,
+    );
+    res.send(response);
   };
   deleteArticle = async (req, res, next) => {
-    console.log(req.params.articleId, " IdDel");
+    const response = await this.articleService.deleteArticle(
+      req.params.articleId,
+    );
+    res.send(response);
   };
 }
 
