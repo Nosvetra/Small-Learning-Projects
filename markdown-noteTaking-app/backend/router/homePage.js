@@ -1,7 +1,8 @@
 import express from "express";
-import articleController from "../controller/articleController.js";
+import controller from "../controller/articleController.js";
 
 const router = express.Router();
+const articleController = new controller();
 
 router.get("/", articleController.showLimitedArticles);
 export default router;

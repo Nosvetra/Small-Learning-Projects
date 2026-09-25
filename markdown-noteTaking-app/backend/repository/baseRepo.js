@@ -6,15 +6,35 @@ class baseRepository {
   }
 
   async createNote(data) {
-    return await this.model.create(data);
+    try {
+      return await this.model.create(data);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async updateNote(_id, update) {
-    return await this.model.findOneAndUpdate({ _id }, update, { new: true });
+    try {
+      return await this.model.findOneAndUpdate({ _id }, update, { new: true });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async getParticularArticle(id) {
+    try {
+      return await this.model.findById(id);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async getLimitedArticles() {
-    return await this.model.find().limit(10);
+    try {
+      return await this.model.find().limit(10);
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 

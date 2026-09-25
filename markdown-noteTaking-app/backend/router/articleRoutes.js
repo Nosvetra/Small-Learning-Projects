@@ -1,6 +1,8 @@
 import express from "express";
-import articleController from "../controller/articleController.js";
 
+import controller from "../controller/articleController.js";
+
+const articleController = new controller();
 const router = express.Router();
 
 router.post("/new", articleController.articlePost);
