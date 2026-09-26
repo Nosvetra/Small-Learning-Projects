@@ -10,6 +10,8 @@ const config = {
     origin: process.env.CORS_ORIGIN || "*",
     Credentials: true,
   },
+  sessionSecret: process.env.SESSION_SECRET,
+  sessionAltSecret: process.env.ALTERNATE_SESSION_SECRET,
 };
 
 export default config;
