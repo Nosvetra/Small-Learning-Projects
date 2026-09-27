@@ -10,15 +10,11 @@ export default class authenticationServices {
   }
   async createNewUser(data) {
     data.password = await bcrypt.hash(data.password, saltRounds);
-    await this.userRepo.createUser(data);
+    const objid = await this.userRepo.createUser(data);
 
-    const accessToken = jwt.sign(
-      { userId: data.username },
-      config.sessionSecret,
-      {
-        expiresIn: "2d",
-      },
-    );
+    const accessToken = jwt.sign({ userId: objid._id }, config.sessionSecret, {
+      expiresIn: "2d",
+    });
     return accessToken;
   }
 }

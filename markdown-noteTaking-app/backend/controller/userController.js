@@ -6,7 +6,8 @@ export default class userController {
   }
 
   getUser = async (req, res, next) => {
-    return await this.userService.getUser(username);
+    const response = await this.userService.getUser(req.user["userId"]);
+    console.log(response);
   };
   patchUser = async (req, res, next) => {
     return await this.userService.updateUser(data);

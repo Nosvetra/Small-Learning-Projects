@@ -8,7 +8,8 @@ class articleController {
     res.send(response);
   };
   articlePost = async (req, res, next) => {
-    const response = await this.articleService.articlePost(req.body);
+    console.log(req.body, req.user);
+    const response = await this.articleService.articlePost(req.body, req.user);
     res.send(response._id);
   };
   particularArticle = async (req, res, next) => {

@@ -5,7 +5,8 @@ class articleServices {
   constructor() {
     this.noteRepo = new baseRepository(articleNote);
   }
-  async articlePost(data) {
+  async articlePost(data, user) {
+    data.createdBy = user.userId;
     return await this.noteRepo.createNote(data);
   }
   async getParticularArticle(idString) {
