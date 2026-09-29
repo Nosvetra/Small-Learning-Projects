@@ -5,6 +5,9 @@ export default class authController {
   }
   createUser = async (req, res, next) => {
     const response = await this.authService.createNewUser(req.body);
-    res.json({ accesstoken: response });
+    res.json({
+      accesstoken: response.accessToken,
+      refreshToken: response.refreshToken,
+    });
   };
 }
