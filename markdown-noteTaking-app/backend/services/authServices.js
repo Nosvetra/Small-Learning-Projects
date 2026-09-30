@@ -16,7 +16,7 @@ export default class authenticationServices {
       { userId: objid._id },
       config.jwtAccessSecret,
       {
-        expiresIn: "15s",
+        expiresIn: "15m",
       },
     );
 
@@ -26,5 +26,21 @@ export default class authenticationServices {
       { expiresIn: "7d" },
     );
     return { accessToken, refreshToken };
+  }
+
+  async createAccessToken(refreshToken) {
+    try {
+      const payload = jwt.verify(refreshToken, config.jwtRefreshSecret);
+
+      if (!payload.userId) {
+        return null;
+      }
+
+      return jwt.sign({ userId: payload.userId }, config.jwtAccessSecret, {
+        expiresIn: "15m",
+      });
+    } catch {
+      return null;
+    }
   }
 }

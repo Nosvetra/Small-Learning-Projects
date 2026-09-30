@@ -8,6 +8,7 @@ const userController = new userControllerobj();
 const authController = new authControllerobj();
 
 router.post("/", authController.createUser);
+router.post("/refresh", authController.refreshAccessToken);
 router.get("/:username", authenticate, userController.getUser);
 router.patch("/:username", authenticate, userController.patchUser);
 router.delete("/:username", authenticate, userController.deleteUser);

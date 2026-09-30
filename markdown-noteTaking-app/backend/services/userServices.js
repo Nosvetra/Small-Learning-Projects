@@ -5,7 +5,7 @@ export default class userService {
     this.userRepo = new userRepository();
   }
   async updateUser(data) {
-    return await this.userRepo.updateUser(data.id, data.update);
+    return await this.userRepo.updateUser(data["userId"], data["updatedData"]);
   }
   async getUser(username) {
     return await this.userRepo.getUser(username);
