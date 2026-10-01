@@ -5,6 +5,13 @@ export default class userController {
     this.userService = new userServices();
   }
 
+  verifyUser = async (req, res, next) => {
+    const { refreshToken, accessToken } = await this.userService.verifyUser(
+      req.body,
+    );
+    res.json({ refreshToken: refreshToken, accessToken: accessToken });
+  };
+
   getUser = async (req, res, next) => {
     const { _id, name, username, createdAt, updatedAt } =
       await this.userService.getUser(req.user["userId"]);

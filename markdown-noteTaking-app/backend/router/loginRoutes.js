@@ -7,7 +7,8 @@ const router = express.Router();
 const userController = new userControllerobj();
 const authController = new authControllerobj();
 
-router.post("/", authController.createUser);
+router.post("/signup", authController.createUser);
+router.post("/signin", userController.verifyUser);
 router.post("/refresh", authController.refreshAccessToken);
 router.get("/:username", authenticate, userController.getUser);
 router.patch("/:username", authenticate, userController.patchUser);

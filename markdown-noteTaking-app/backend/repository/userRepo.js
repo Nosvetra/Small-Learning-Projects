@@ -13,6 +13,15 @@ export default class userRepository extends baseRepository {
       console.log(err);
     }
   }
+
+  async getUserByUsername(userName) {
+    try {
+      return await this.model.findOne({ username: userName });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   async getUser(userId) {
     try {
       return await this.model.findById(userId);
