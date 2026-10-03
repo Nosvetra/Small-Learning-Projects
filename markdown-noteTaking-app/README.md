@@ -186,6 +186,16 @@ The app uses two JWT tokens:
 - access token: short-lived, used for protected API calls
 - refresh token: longer-lived, used to generate a new access token
 
+### JWT payload structure
+
+The JWT payload does not include the username or password. Instead, the token is signed with the MongoDB user id:
+
+```js
+jwt.sign({ userId: user._id }, secretKey, { expiresIn: "15m" });
+```
+
+This means the payload contains the authenticated user's MongoDB ObjectId, which is later decoded and attached to `req.user` during authentication.
+
 The access token is validated in `middleware.js`, and successful validation attaches the decoded user to `req.user`.
 
 ## Environment variables
